@@ -44,14 +44,3 @@
 #let deep-teal = rgb(9.019607843137255%, 74.50980392156863%, 81.17647058823529%)
 #let deep-teal-darker = rgb(9.019607843137255%, 74.50980392156863%, 81.17647058823529%).darken(darken-percentage)
 
-// From the CAKE paper
-// \definecolor{teacher-cmap-green}{rgb}{0.2923363702661794,0.5107465581015513, 0.3906173846714218}
-// \definecolor{teacher-cmap-purple}{rgb}{0.6613156436870031, 0.33633419891183414, 0.7164828207890344}
-// \definecolor{student-cmap-blue}{rgb}{0.24715576253545807, 0.49918708160096675, 0.5765599057376697}
-// \definecolor{student-cmap-red}{rgb}{0.7634747047461135, 0.3348456555528834, 0.225892295531744}
-
-// Translate the above latex colors to typst definitions (multiply by 100 to convert to percentage)
-#let cake-teacher-cmap-green = rgb(29.23363702661794%, 51.07465581015513%, 39.06173846714218%)
-#let cake-teacher-cmap-purple = rgb(66.13156436870031%, 33.633419891183414%, 71.64828207890344%)
-#let cake-student-cmap-blue = rgb(24.715576253545807%, 49.918708160096675%, 57.65599057376697%)
-#let cake-student-cmap-red = rgb(76.34747047461135%, 33.48456555528834%, 22.5892295531744%)
