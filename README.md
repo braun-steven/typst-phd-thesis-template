@@ -1,7 +1,7 @@
 # Typst Template For A Phd Thesis
 
 Typst template for cumulative PhD thesis: compile your main text, list published papers,
-and merge the PDFs of your publications into a single thesis. 
+and merge the PDFs of your publications into a single thesis. Check out [main.pdf](./main.pdf) for the compiled `main.typ` file and [dissertation.pdf](./dissertation.pdf) for the `main.pdf` merged with the papers in [paper/](./paper).
 
 <p align="center">
   <img src="front-page-example.png" alt="Front page example" width="700">
@@ -16,9 +16,8 @@ and merge the PDFs of your publications into a single thesis.
   publication list).
 - `paper/`: PDFs of accepted/published papers that get merged for the cumulative build.
 - `bibliography.bib` with `csl/` styles for citations; `res/` for figures.
-- `compile.sh`: Since typst does not support splicing other PDF pages into the output PDF, we need additional script that takes the typst generated PDF and inserts the papers in `papers/` into the final PDF at the correct positions. If you are writing a monography instead, you can ignore this.
+- `compile.sh`: Since typst does not support splicing other PDF pages into the output PDF, we need additional script that takes the typst generated PDF and inserts the papers in `papers/` into the final PDF at the correct positions. 
 
-Check out [main.pdf](./main.pdf) for the compiled `main.typ` file and [dissertation.pdf](./dissertation.pdf) for the `main.pdf` merged with the papers in [paper/](./paper).
 
 ## Getting started
 1) Set your metadata in `main.typ` under `project.with(...)`.
@@ -32,3 +31,7 @@ Check out [main.pdf](./main.pdf) for the compiled `main.typ` file and [dissertat
 - `typst compile main.typ`: compile the main document to `main.pdf`.
 - `typst watch main.typ`: live rebuild while editing.
 - `./compile.sh`: full pipeline including paper PDF merging (requires `pdftk` and Ghostscript `gs`).
+
+## Notes
+- The papers list in this repository under [./paper/](./paper/) are not mine and purely for as an example.
+- If you write a monography instead of a cumulative thesis, simply ignore [compile.sh](./compile.sh) and remove the part after the `#bibliography(...)` call in [main.typ](./main.typ).

@@ -1,6 +1,7 @@
 #import "definitions.typ": *
 #import "constants.typ": *
 
+// Inserts a page break only when currently on an even page.
 #let pagebreakAtEven() = {
     context {
         if calc.even(here().page()) {
@@ -9,6 +10,7 @@
     }
 }
 
+// Renders the statutory declaration page required by the promotionsordnung. This is specific to the Technische Universität Darmstadt and needs to be customized for other institutions.
 #let page-promotionsordnung(author, date, city) = {
     [
         // Erklärung Promotionsordnung
@@ -54,6 +56,7 @@
     ]
 }
 
+// Shows English and German abstracts with heading and separation.
 #let page-abstract() = {
     // Abstract page.
     align(center)[
@@ -75,6 +78,7 @@
     pagebreak(weak: true)
 }
 
+// Displays the acknowledgments page and breaks to the next page.
 #let page-acknowledgments() = {
     align(
         center,
@@ -88,6 +92,7 @@
 }
 
 
+// Simple quote page with centered quotation and author attribution.
 #let page-quote() = [
 
     #align(center + horizon)[
@@ -101,6 +106,7 @@
 ]
 
 
+// Builds the front cover page with title, author, and program details.
 #let page-title(title, author, date, university, department) = {
     v(5em)
     align(center)[
@@ -143,6 +149,7 @@
     pagebreak(weak: true)
 }
 
+// Shows the back of the title page with metadata, license, and defense date.
 #let page-title-back(author, title, date-defense, university, city) = {
     align(
         bottom,
@@ -163,6 +170,7 @@
     ]
 }
 
+// Creates a chapter opener page with stylized heading and cleared header/footer.
 #let chapter-page(title) = {
     context {
         set page(header: "", footer: "")
@@ -183,6 +191,7 @@
     }
 }
 
+// Formats an individual publication entry with metadata, abstract, and optional paging gaps.
 #let publication-page(
     title: "", abstract: "", authors: [], venue: "",
     year: "", equal-contribution-notice: false, break-page: true, pages: -1, contributions-par: ""
@@ -237,6 +246,7 @@
 ]
 
 
+// Generates the table of contents with styled top-level entries.
 #let page-outline() = {
     // Table of contents.
     show outline.entry.where(level: 1): it => {
@@ -249,6 +259,7 @@
     pagebreak(weak: true)
 }
 
+// Lists all figure entries from image figures in the document.
 #let page-list-of-figures() = {
     // Table of contents.
     outline(
@@ -259,6 +270,7 @@
 }
 
 
+// Displays the publication and contribution summary page.
 #let page-publication-list-summary() = [
     #align(
         center,
@@ -272,6 +284,7 @@
 ]
 
 
+// Shows the notation legend page.
 #let page-notation() = [
     #align(
         center,
@@ -285,6 +298,7 @@
 ]
 
 
+// Presents the acronym list page.
 #let page-acronyms() = [
     #align(
         center,

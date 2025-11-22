@@ -12,6 +12,7 @@
 // Jacopo Zagoli: https://github.com/zagoli/simple-typst-thesis
 
 
+// Builds the centered header for top-level sections with an underline.
 #let buildMainHeader(mainHeadingContent) = {
     [
         #align(center, smallcaps(mainHeadingContent))
@@ -19,6 +20,7 @@
     ]
 }
 
+// Builds a header that shows the main heading on even pages and the secondary heading on odd pages.
 #let buildSecondaryHeader(mainHeadingContent, secondaryHeadingContent) = {
     context {
         let loc = here()
@@ -37,7 +39,7 @@
 }
 
 
-// To know if the secondary heading appears after the main heading
+// Returns whether the secondary heading occurs after the main heading based on page and vertical position.
 #let isAfter(secondaryHeading, mainHeading) = {
     let secHeadPos = secondaryHeading.location().position()
     let mainHeadPos = mainHeading.location().position()
@@ -50,6 +52,7 @@
     return false
 }
 
+// Determines which header to render on the current page, preferring secondary headings when present.
 #let getHeader() = {
         context {
             let loc = here()
@@ -84,6 +87,7 @@
         }
 }
 
+// Main entry point for the dissertation: sets metadata, styling, navigation, and front matter before rendering body content.
 #let project(
     title: "", author: "",
     date-submission: "", date-defense: "", city: "", university: "",
@@ -98,19 +102,19 @@
     set par(justify: true)
     set heading(numbering: "1.1")
 
+    // Style hyperlinks so only the linked text uses the accent color.
     show link: it => {
         text(thesis-red)[#it]
     }
 
-    // Title page.
+    // Title and back pages for the dissertation cover.
     page-title(title, author, date-submission, university, department)
 
     // Set inside/outside margins after title page
     set page(paper: "a4", margin: (inside: 4.5cm, outside: 2.75cm, y: 3.50cm))
     page-title-back(author, title, date-defense, university, city)
 
-    // Set footer number "I" style left/right
-
+    // Roman numeral footer for front matter, alternating left/right.
     set page(footer: {
         context {
             if calc.even(here().page()) {
@@ -122,6 +126,7 @@
     })
 
 
+    // Compact heading rendering for front matter while preserving spacing.
     show heading: it => block({
         // If heading has numbering, add space between counter and it.body
         if it.numbering != none {
@@ -139,6 +144,7 @@
     page-acknowledgments()
     page-outline()
 
+    // Front matter lists; clear header afterward to avoid reusing computed values.
     page-list-of-figures()
     page-acronyms()
     page-notation()
@@ -163,6 +169,7 @@
         }
     })
 
+    // Figure defaults for alignment, placement, and spacing.
     // Align Figure captions to the left
     show figure.caption: set align(left)
     set figure(placement: top)
@@ -188,6 +195,7 @@
     }
 
 
+    // Colorize citations and references while respecting Typst link behavior.
     show cite: it => {
         // Only color the number, not the brackets.
         // show regex("\d+"): set text(fill: thesis-red)
@@ -219,6 +227,7 @@
     }
 
 
+    // Apply bibliography style, paragraph spacing/indentation, dynamic header, and reset page counter.
     set cite(style: "apa")
 
     set par(first-line-indent: par-first-line-indent, spacing: 0.75em)
@@ -227,16 +236,19 @@
     body
 }
 
+// Cites a reference in prose form without surrounding brackets.
 #let cites(key) = {
     cite(key, form: "prose")
 }
 
 
+// Places a TODO margin note on the left with highlighted styling.
 #let todo(body) = [
     #margin-note(side: left, stroke: color-orange-fg, fill: color-orange-bg)[#text(size:8pt)[#body]]
 ]
 
 
+// Formats the header text for a publication summary box in the cumulative dissertation section.
 #let publication-header-text(authors: "", title: "", venue: "", under-review: false, preprint: "") = [
 
     This section summarizes and contextualizes the paper
@@ -257,6 +269,7 @@
 
 
 // Pagebreak with empty header/footer
+// Inserts a clean pagebreak while temporarily clearing the header and footer content.
 #let pagebreak-clean(weak: false, to: "") = {
     set page(header: "", footer: "")
     pagebreak(weak: weak, to: to)
