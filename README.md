@@ -18,6 +18,8 @@ and merge the PDFs of your publications into a single thesis.
 - `bibliography.bib` with `csl/` styles for citations; `res/` for figures.
 - `compile.sh`: Since typst does not support splicing other PDF pages into the output PDF, we need additional script that takes the typst generated PDF and inserts the papers in `papers/` into the final PDF at the correct positions. If you are writing a monography instead, you can ignore this.
 
+Check out [main.pdf](./main.pdf) for the compiled `main.typ` file and [dissertation.pdf](./dissertation.pdf) for the `main.pdf` merged with the papers in [paper/](./paper).
+
 ## Getting started
 1) Set your metadata in `main.typ` under `project.with(...)`.
 2) Replace the sample chapter text with your content and adjust front/back matter pages under
