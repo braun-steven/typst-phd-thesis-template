@@ -4,7 +4,7 @@ Typst template for cumulative PhD thesis: compile your main text, list published
 and merge the PDFs of your publications into a single thesis. 
 
 <p align="center">
-  <img src="front-page-example.svg" alt="Front page example" width="700">
+  <img src="front-page-example.png" alt="Front page example" width="700">
 </p>
 
 
