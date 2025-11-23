@@ -1,7 +1,6 @@
 # Typst Template For A Phd Thesis
 
-Typst template for cumulative PhD thesis: compile your main text, list published papers,
-and merge the PDFs of your publications into a single thesis. Check out [main.pdf](./main.pdf) for the compiled `main.typ` file and [dissertation.pdf](./dissertation.pdf) for the `main.pdf` merged with the papers in [paper/](./paper).
+Typst template for a (cumulative) PhD thesis. Check out [main.pdf](./main.pdf) for the compiled `main.typ` file and [dissertation.pdf](./dissertation.pdf) for the `main.pdf` merged with the papers in [paper/](./paper).
 
 <p align="center">
   <img src="front-page-example.png" alt="Front page example" width="700">
@@ -15,8 +14,8 @@ and merge the PDFs of your publications into a single thesis. Check out [main.pd
 - `pages.typ` and `pages/*.typ`: front/back matter (abstracts, acknowledgments, notation, acronyms,
   publication list).
 - `paper/`: PDFs of accepted/published papers that get merged for the cumulative build.
-- `bibliography.bib` with `csl/` styles for citations; `res/` for figures.
-- `compile.sh`: Since typst does not support splicing other PDF pages into the output PDF, we need additional script that takes the typst generated PDF and inserts the papers in `papers/` into the final PDF at the correct positions. 
+- `bibliography.bib` for references.
+- `compile.sh`: Since typst does not support splicing other PDF pages into the output PDF, we need an additional script that takes the typst generated PDF and inserts the papers in `paper/` into the final PDF at the correct positions. 
 
 
 ## Getting started
